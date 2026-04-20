@@ -1,0 +1,21 @@
+---
+- name: Install Nginx on EC2
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+- name: Install Docker on Docker Server
+  hosts: docker
+  become: yes
+
+  tasks:
+    - name: Install docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes

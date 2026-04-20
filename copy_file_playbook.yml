@@ -1,0 +1,10 @@
+---
+- name: Copy file to target host
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: Copy file to remote server
+      copy:
+        src: index.html
+        dest: /tmp/index.html
