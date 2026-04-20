@@ -10,9 +10,21 @@ pipeline {
                         keyFileVariable: 'private_key'
                     )
                 ]) {
+                    sh '''
+                    mkdir -p ~/.ssh
+                    chmod 700 ~/.ssh
+
+                    ssh-keygen -R 18.207.126.240 || true
+                    ssh-keygen -R 54.145.6.120 || true
+
+                    ssh-keyscan -H 18.207.126.240 >> ~/.ssh/known_hosts
+                    ssh-keyscan -H 54.145.6.120 >> ~/.ssh/known_hosts
+
+                    chmod 600 ~/.ssh/known_hosts
+                    '''
+
                     dir('activity_2') {
                         sh '''
-                        ANSIBLE_HOST_KEY_CHECKING=False \
                         ansible-playbook -i inventory deploy.yml --private-key $private_key -u ubuntu
                         '''
                     }
