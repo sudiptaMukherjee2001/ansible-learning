@@ -1,2 +1,2 @@
-manage-node-1 ansible_host=54.167.5.168 ansible_user=ubuntu ansible_ssh_private_key_file=/home/sudipta/Downloads/key-pair/manageNode.pem
-manage-node-2 ansible_host=23.22.166.20 ansible_user=ubuntu ansible_ssh_private_key_file=/home/sudipta/Downloads/key-pair/manageNode.pem
+manage-node-1 ansible_host=18.207.126.240 
+manage-node-2 ansible_host=54.145.6.120 

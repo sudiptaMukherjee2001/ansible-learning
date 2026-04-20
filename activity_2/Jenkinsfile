@@ -1,0 +1,14 @@
+pipeline{
+    agent any
+    stages{
+        stage("Run Ansible Playbook"){
+            steps{
+               withCredentials([sshUserPrivateKey(credentialsId: 'd2bfcac2-1f06-4f5a-a84f-f8cadab827a0', keyFileVariable: 'private_key', usernameVariable: 'user')]) {
+                    sh "ansible-playbook -i inventory.ini playbook.yml --private-key ${private_key} -u ${user}"
+                }
+            }
+           
+        }
+    }
+    
+}
