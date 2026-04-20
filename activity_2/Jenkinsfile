@@ -7,17 +7,13 @@ pipeline {
                 withCredentials([
                     sshUserPrivateKey(
                         credentialsId: 'd2bfcac2-1f06-4f5a-a84f-f8cadab827a0',
-                        keyFileVariable: 'private_key',
-                        usernameVariable: 'user'
+                        keyFileVariable: 'private_key'
                     )
                 ]) {
                     dir('activity_2') {
                         sh '''
-                        echo "USER=$user"
-                        echo "KEY=$private_key"
-
                         ANSIBLE_HOST_KEY_CHECKING=False \
-                        ansible-playbook -i inventory deploy.yml --private-key $private_key -u $user
+                        ansible-playbook -i inventory deploy.yml --private-key $private_key -u ubuntu
                         '''
                     }
                 }
