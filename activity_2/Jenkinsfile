@@ -13,6 +13,9 @@ pipeline {
                 ]) {
                     dir('activity_2') {
                         sh '''
+                        echo "USER=$user"
+                        echo "KEY=$private_key"
+
                         ANSIBLE_HOST_KEY_CHECKING=False \
                         ansible-playbook -i inventory deploy.yml --private-key $private_key -u $user
                         '''
