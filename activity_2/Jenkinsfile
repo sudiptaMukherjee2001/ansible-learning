@@ -14,11 +14,11 @@ pipeline {
                     mkdir -p ~/.ssh
                     chmod 700 ~/.ssh
 
-                    ssh-keygen -R 18.207.126.240 || true
-                    ssh-keygen -R 54.145.6.120 || true
+                    
+                    
 
-                    ssh-keyscan -H 18.207.126.240 >> ~/.ssh/known_hosts
-                    ssh-keyscan -H 54.145.6.120 >> ~/.ssh/known_hosts
+                    ssh-keyscan -H 34.227.53.15 >> ~/.ssh/known_hosts
+                    ssh-keyscan -H 18.212.86.97 >> ~/.ssh/known_hosts
 
                     chmod 600 ~/.ssh/known_hosts
                     '''
